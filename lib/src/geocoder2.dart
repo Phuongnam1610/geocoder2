@@ -10,8 +10,9 @@ class Geocoder2 {
     required String googleMapApiKey,
     String? language,
   }) async {
-    var url = language != null ? 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey&language=$language' : 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey';
-    var request = http.Request('GET', Uri.parse(url));
+ var url = language != null
+        ? 'https://maps.gomaps.pro/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey&language=$language'
+        : 'https://maps.gomaps.pro/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey';    var request = http.Request('GET', Uri.parse(url));
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
       String data = await response.stream.bytesToString();
